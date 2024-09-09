@@ -1,0 +1,16 @@
+.Footer {
+    color: var(--fontColor); /*Import from Nav.css*/
+}
+
+.pageDisplay {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--backGroundColor);
+    width: 100vw;
+    height: 10vh;
+}
+
