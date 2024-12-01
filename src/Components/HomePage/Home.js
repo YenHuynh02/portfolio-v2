@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './Home.css';
+import './Home.sass';
 import { peter, github, instagram, linkedln, react, javascript } from '../../Images/images';
 
 export default function Home({ setNavOpacity }) {
@@ -79,7 +79,10 @@ export default function Home({ setNavOpacity }) {
                 />
                 <span className="icon javascript"><img src={javascript} style={programmingLanguage} alt="javascript" /></span>
                 <div className="introduce">
-                    <p>Introduce</p>
+                    <p>
+                        Hello, my name is Yen Huynh, I'm  a learner web developer, and focus on Front-end
+                        environment.
+                    </p>
                 </div>
             </div>
 

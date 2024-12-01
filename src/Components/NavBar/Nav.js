@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './Nav.css';
+import './Nav.sass';
 import logo from '../../Images/logo.png'
 
 export default function Nav({ navOpacity }) {
