@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import Nav from './Components/NavBar/Nav';
-import Home from './Components/HomePage/Home';
-import Footer from './Components/Footer/Footer';
+import Nav from './frontend/Components/NavBar/Nav';
+import Home from './frontend/Components/HomePage/Home';
+import Footer from './frontend/Components/Footer/Footer';
 
 export default function App() {
   const [navOpacity, setNavOpacity] = useState(1);
