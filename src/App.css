@@ -2,8 +2,19 @@
   --maincolor: #000000;
 }
 
+* {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
 .App {
   background: var(--maincolor);
   width: 100%;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+.mainContent {
+  flex: 1;
 }

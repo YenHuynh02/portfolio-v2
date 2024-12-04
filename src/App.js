@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import Nav from './frontend/Components/NavBar/Nav';
-import Home from './frontend/Components/HomePage/Home';
-import Footer from './frontend/Components/Footer/Footer';
+import Nav from './frontend/NavBar/Nav';
+import Home from './frontend/HomePage/Home';
+import Footer from './frontend/Footer/Footer';
 
 export default function App() {
-  const [navOpacity, setNavOpacity] = useState(1);
 
   return (
     <div className='App'>
-      <Nav navOpacity={navOpacity}></Nav>
-      <Home setNavOpacity={setNavOpacity}></Home>
+      <Nav></Nav>
+      <Home></Home>
       <Footer></Footer>
     </div>
   );

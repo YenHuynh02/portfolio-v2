@@ -1,0 +1,55 @@
+$fontSize: 20px
+$backGroundColor: rgba(22, 17, 52, 0.95)
+
+// Navigation bar
+.navBar
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  width: 100%
+  z-index: 9999
+
+  .navContent
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: $backGroundColor
+
+    ul
+      width: 100vw
+      display: flex
+      flex-wrap: wrap
+      justify-content: space-evenly
+      align-items: center
+      list-style-type: none
+
+      li
+        display: inline-block
+
+        img
+          width: 70px
+          opacity: 0.5
+          animation: opacity 2s linear infinite
+          overflow: hidden
+          z-index: 0
+
+        a
+          display: inline-block
+          font-size: $fontSize
+          text-decoration: none
+          margin: 0 5vw
+          opacity: 0.5
+          transition: 0.5s transform, 0.5s opacity
+
+          &:hover
+            opacity: 1
+            transform: scale(1.2)
+
+  @keyframes opacity
+    0%
+      opacity: 0.5
+    50%
+      opacity: 1
+    100%
+      opacity: 0.5
