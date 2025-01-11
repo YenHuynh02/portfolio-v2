@@ -1,40 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './Nav.sass';
-import { logo } from '../../Images/images'
+import { menuData } from "../../backend/data/menuData";
+import MenuItems from '../Components/MenuItems';
+import { peter, logo } from '../../Images/images'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function Nav() {
+    const [activeArchived, setActiveArchived] = useState<string>('Home');
+
+    useEffect(() => {
+        const currentpath = window.location.pathname;
+        const currentMenu = menuData.find((menu) => menu.url === currentpath);
+        if (currentMenu) {
+            setActiveArchived(currentMenu.title);
+        }
+        else {
+            setActiveArchived('Home');
+        }
+    }, []);
+
+    const logoIcon = [
+        {
+            icon: faGithub,
+            url: 'https://github.com/YenHuynh02',
+        },
+        {
+            icon: faInstagram,
+            url: 'https://www.instagram.com/peter.huynh2/'
+        },
+        {
+            icon: faLinkedin,
+            url: 'https://www.linkedin.com/in/yen-huynh-pp12/'
+        }
+    ];
 
     return (
-        <div className="navBar">
-            <div className="navContent">
-                <ul>
-                    <li>
-                        <a href="https://github.com/YenHuynh02"
-                        >
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/YenHuynh02"
-                        >
-                            Projects
-                        </a>
-                    </li>
-                    <li><img src={logo} alt='logo' id="logo"></img></li>
-                    <li>
-                        <a href="https://github.com/YenHuynh02"
-                        >
-                            Background
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/YenHuynh02"
-                        >
-                            Contact
-                        </a>
-                    </li>
-                </ul>
+        <nav className="navBar">
+            <div className="profileImg">
+                <img src={peter} alt='profileImg'></img>
             </div>
-        </div>
+            <ul>
+                {menuData.map((menu, index) => {
+                    return (
+                        <MenuItems
+                            key={index}
+                            items={menu}
+                            activeItem={activeArchived}
+                            setActiveItem={setActiveArchived}
+                        />
+                    );
+                })}
+            </ul>
+            <div className="socialMediaLogo">
+                {logoIcon.map((logo, index) => {
+                    return (
+                        <a href={logo.url} target="_blank">
+                            <FontAwesomeIcon key={index} icon={logo.icon} />
+                        </a>
+                    )
+                })}
+            </div>
+        </nav>
     );
 }

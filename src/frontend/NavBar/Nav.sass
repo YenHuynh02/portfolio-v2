@@ -1,50 +1,94 @@
 $fontSize: 20px
-$backGroundColor: rgba(22, 17, 52, 0.95)
+$flexDisplay: flex
+$flexWrap: wrap
+$backgroundColor: rgba(226, 224, 234, 0.5)
+$textColor: darkBlue
 
 // Navigation bar
 .navBar
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  width: 100%
-  z-index: 9999
+  border-right: 1px solid black
+  width: 20%
+  height: 100%
+  overflow: hidden
 
-  .navContent
-    display: flex
-    align-items: center
+  .profileImg
+    display: $flexDisplay
+    flex-wrap: $flexWrap
     justify-content: center
-    background-color: $backGroundColor
 
-    ul
-      width: 100vw
-      display: flex
-      flex-wrap: wrap
-      justify-content: space-evenly
+    img
+      margin: 20px 0 
+      height: 170px
+      border-radius: 50%
+      z-index: 0
+
+  ul
+    display: $flexDisplay
+    flex-wrap: $flexWrap
+    flex-direction: column
+    list-style-type: none
+    padding: 0
+
+    li
+      display: $flexDisplay
+      flex-wrap: $flexWrap
       align-items: center
-      list-style-type: none
+      justify-content: center
 
-      li
+      span
+        display: $flexDisplay
+        align-items: center
+        width: 20px
+        height: 40px
+        transform: scale(1.2)
+        justify-content: center
+        margin-right: 30px
+
+      img
+        width: 70px
+        opacity: 0.5
+        animation: opacity 2s linear infinite
+        overflow: hidden
+        z-index: 0
+
+      a
+        box-sizing: border-box
+        display: $flexDisplay
+        align-content: center
+        width: 100px
+        height: 50px
         display: inline-block
+        font-size: $fontSize
+        text-decoration: none
+        margin: 0.5vh 0 0.5vh 0
+        opacity: 0.5
+        font-weight: bold
+        background: transparent
+        border-radius: 5px
 
-        img
-          width: 70px
-          opacity: 0.5
-          animation: opacity 2s linear infinite
-          overflow: hidden
-          z-index: 0
+        &:hover, &.active
+          display: $flexDisplay
+          align-items: center
+          justify-content: center
+          opacity: 1
+          color: $textColor
+          border-left: 3px solid $textColor
+          background: $backgroundColor
+          transform: scaleX(20px)
 
-        a
-          display: inline-block
-          font-size: $fontSize
-          text-decoration: none
-          margin: 0 5vw
-          opacity: 0.5
-          transition: 0.5s transform, 0.5s opacity
+  .socialMediaLogo
+    display: $flexDisplay
+    justify-content: center
+    background: black 
 
-          &:hover
-            opacity: 1
-            transform: scale(1.2)
+    a 
+      display: $flexDisplay
+      align-items: center
+      justify-content: center
+      background: red
+      width: 5vw
+      height: 100px
+      
 
   @keyframes opacity
     0%
