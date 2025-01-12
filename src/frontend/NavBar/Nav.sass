@@ -6,6 +6,7 @@ $textColor: darkBlue
 
 // Navigation bar
 .navBar
+  position: relative
   border-right: 1px solid black
   width: 20%
   height: 100%
@@ -44,12 +45,7 @@ $textColor: darkBlue
         justify-content: center
         margin-right: 30px
 
-      img
-        width: 70px
-        opacity: 0.5
-        animation: opacity 2s linear infinite
-        overflow: hidden
-        z-index: 0
+      
 
       a
         box-sizing: border-box
@@ -77,23 +73,25 @@ $textColor: darkBlue
           transform: scaleX(20px)
 
   .socialMediaLogo
-    display: $flexDisplay
+    position: absolute
+    bottom: 0
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(2, auto)
     justify-content: center
-    background: black 
+    align-items: center
 
-    a 
+    span
       display: $flexDisplay
       align-items: center
       justify-content: center
-      background: red
       width: 5vw
-      height: 100px
-      
+      height: 12vh  
 
-  @keyframes opacity
-    0%
-      opacity: 0.5
-    50%
-      opacity: 1
-    100%
-      opacity: 0.5
+      a:hover
+          transform: scale(1.5)
+          
+      img
+        height: 40px
+        overflow: hidden
+        z-index: 0

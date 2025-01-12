@@ -30,6 +30,9 @@ export default function Nav() {
             url: 'https://www.instagram.com/peter.huynh2/'
         },
         {
+            img: logo,
+        },
+        {
             icon: faLinkedin,
             url: 'https://www.linkedin.com/in/yen-huynh-pp12/'
         }
@@ -55,9 +58,18 @@ export default function Nav() {
             <div className="socialMediaLogo">
                 {logoIcon.map((logo, index) => {
                     return (
-                        <a href={logo.url} target="_blank">
-                            <FontAwesomeIcon key={index} icon={logo.icon} />
-                        </a>
+                        <span>
+                            {logo.icon ? (
+                                <a
+                                    href={logo.url}
+                                    target="_blank"
+                                >
+                                    <FontAwesomeIcon key={index} icon={logo.icon} size="2xl" color="red" />
+                                </a>
+                            ) : (
+                                <img src={logo.img} alt='logo' />
+                            )}
+                        </span>
                     )
                 })}
             </div>
