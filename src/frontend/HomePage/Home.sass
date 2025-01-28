@@ -1,7 +1,23 @@
 $boxShadowColor: rgba(84, 65, 194, 0.95)
 
 .homePage
+    display: flex
+    justify-content: center
+    align-items: center
     width: 80%
     height: 100%
-    overflow-y: auto
-    z-index: 0
+
+    .homeContainer
+        width: 50%
+        height: 50%
+
+        p
+            font-size: 3vw
+            font-weight: 200
+
+            .fadeIn,
+            .fadeOut
+                color: darkBlue
+                font-family: cursive
+
+
