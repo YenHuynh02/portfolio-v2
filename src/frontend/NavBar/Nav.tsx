@@ -64,7 +64,7 @@ export default function Nav() {
                                     href={logo.url}
                                     target="_blank"
                                 >
-                                    <FontAwesomeIcon key={index} icon={logo.icon} size="2xl" color="red" />
+                                    <FontAwesomeIcon key={index} icon={logo.icon} size="2xl" />
                                 </a>
                             ) : (
                                 <img src={logo.img} alt='logo' />
