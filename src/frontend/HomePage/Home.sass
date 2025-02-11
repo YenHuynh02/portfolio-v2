@@ -1,23 +1,210 @@
 $boxShadowColor: rgba(84, 65, 194, 0.95)
+$textColor: #FF4500
 
 .homePage
     display: flex
+    flex-direction: column
     justify-content: center
     align-items: center
     width: 80%
     height: 100%
 
     .homeContainer
-        width: 50%
+        width: 100%
         height: 50%
 
+        .textContainer
+            display: flex
+            justify-content: center
+
+            .wrapper
+                display: flex
+                flex-direction: column
+                align-items: center
+                width: 50%
+
+                p, .fadeIn, .fadeOut
+                    font-family: cursive
+                    font-size: 3vw
+                    font-weight: 200
+                    margin: 0
+
+                .fadeIn,
+                .fadeOut
+                    display: flex
+                    height: 50px // prevent line echo while display flex
+                    align-items: center
+                    color: $textColor
+
+                    span
+                        color: $textColor
+                        animation: cursor 0.5s infinite linear
+
+        .iconContainer
+            display: flex
+            overflow: hidden
+            position: relative
+            width: 100%
+            margin: 100px 0
+
+            .scrolling
+                display: flex
+                gap: 20px
+                animation: scroll-left 35s linear infinite
+
+                img
+                    pointer-events: none
+                    user-select: none
+                    -webkit-user-drag: none
+                    width: 80px
+                    height: 80px
+                    object-fit: contain
+
+    .read-more
+        position: absolute
+        bottom: 50px
+        z-index: 10
+
+        a
+            display: flex
+            font-family: cursive
+            opacity: 1
+            text-decoration: none
+            border-radius: 30px
+            width: 200px
+            height: 60px
+            justify-content: center
+            align-items: center
+            box-shadow: $textColor 0px 3px 12px
+            gap: 20px
+            overflow: hidden
+            background: white
+
+            &:hover
+                color: white
+                background: $textColor
+
+            span
+                position: relative
+                display: block
+                background: $textColor
+                width: 50px
+                height: 50px
+                border-radius: 50px
+
+                #caret-down
+                    position: absolute
+                    display: block
+                    background: white
+                    width: 7px
+                    height: 42px
+                    left: 0
+                    right: 0
+                    border-radius: 10px
+                    margin: auto
+                    transform: translateY(-5px)
+                    animation: caret 1s forwards infinite
+
+                    &::before, &::after
+                        content: ''
+                        display: block
+                        background: white
+                        width: 25px
+                        height: 7px
+                        border-radius: 10px
+
+                    &:before
+                        transform: rotate(40deg) translate(9px, 35px)
+
+                    &:after
+                        transform: rotate(-40deg) translate(-17px,18px)
+
+    .copyright
+        display: fixed
+        z-index: 9999
+
         p
-            font-size: 3vw
-            font-weight: 200
+            display: flex
+            justify-content: center
+            align-items: center
+            position: absolute
+            top: 150px
+            right: -50px
+            background: linear-gradient(#f57474,#2087b0)
+            color: white
+            width: 15vw
+            height: 12vh
+            font-family: cursor
+            font-size: 1.3vw
+            transform: rotate(-90deg)
+            border-radius: 10px
+            opacity: 0.5
+            backdrop-filter: blur(10px)
+            -webkit-backdrop-filter: blur(10px)
+            animation: copy 2s infinite ease-in-out
 
-            .fadeIn,
-            .fadeOut
-                color: darkBlue
-                font-family: cursive
+    .footer-mask
+        position: absolute
+        bottom: 0
+        background: $textColor
+        width: 80%
+        height: 150px
+        opacity: 0.2
+        z-index: 1
+        filter: blur(15px)
+        -webkit-filter: blur(15px)
+        animation: mask 5s infinite linear
+        border-radius: 10px
 
+@keyframes scroll-left
+    from
+        transform: translateX(-50%)
 
+    to
+        transform: translateX(0%)
+
+@keyframes cursor
+    0%
+        opacity: 0
+
+    50%
+        opacity: 1
+
+    100%
+        opacity: 0
+
+@keyframes caret
+    0%
+        transform: translateY(-2px)
+
+    50%
+        transform: translateY(-10px)
+
+    100%
+        transform: translateY(-2px)
+
+@keyframes copy
+    0%
+        transform: rotate(-90deg) translateX(0)
+
+    50%
+        transform: rotate(-90deg) translateX(-15px)
+
+    100%
+        transform: rotate(-90deg) translateX(0)
+
+@keyframes mask
+    0%
+        transform: translateX(-1300px)
+
+    25%
+        transform: translateX(-700px)
+
+    50%
+        transform: translateX(-900px)
+
+    75%
+        transform: translateX(0px)
+
+    100%
+        transform: translateX(-1300px)
