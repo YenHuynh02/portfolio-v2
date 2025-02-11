@@ -2,7 +2,7 @@ $fontSize: 20px
 $flexDisplay: flex
 $flexWrap: wrap
 $backgroundColor: rgba(226, 224, 234, 0.5)
-$textColor: darkBlue
+$textColor: #EB4526
 
 // Navigation bar
 .navBar
@@ -11,6 +11,8 @@ $textColor: darkBlue
   width: 20%
   height: 100%
   overflow: hidden
+  background: white
+  z-index: 9999
 
   .profileImg
     display: $flexDisplay
@@ -18,10 +20,13 @@ $textColor: darkBlue
     justify-content: center
 
     img
-      margin: 20px 0 
+      margin: 20px 0
       height: 170px
       border-radius: 50%
       z-index: 0
+      pointer-events: none
+      user-select: none
+      -webkit-user-drag: none
 
   ul
     display: $flexDisplay
@@ -85,12 +90,14 @@ $textColor: darkBlue
       align-items: center
       justify-content: center
       width: 50px
-      height: 50px  
+      height: 50px
 
       a:hover
-          transform: scale(1.5)
-          
+        transform: scale(1.5)
+
       img
+        pointer-events: none
+        user-select: none
+        -webkit-user-drag: none
         height: 40px
-        overflow: hidden
         z-index: 0
