@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import './Home.sass';
+import StatusBar from "frontend/Components/StatusBar/Status";
 import images from "frontend/Components/Icons/icons";
 
 export default function Home() {
@@ -37,10 +38,13 @@ export default function Home() {
 
     return (
         <div className="homePage">
+            <div className="statusBar">
+                <StatusBar />
+            </div>
             <div className="homeContainer">
                 <div className="textContainer">
                     <div className="wrapper">
-                        <p>Hello, I'm {''}</p>
+                        <p>Hi, I'm {''}</p>
                         <span className={isHiding ? 'fadeOut' : 'fadeIn'}>{visibleText}
                             <span>|</span>
                         </span>
@@ -76,7 +80,6 @@ export default function Home() {
             <div className="copyright">
                 <p>&copy; Yen Huynh {year}</p>
             </div>
-            <div className="footer-mask"></div>
         </div>
     );
 }; 
