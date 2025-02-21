@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import './Home.sass';
 import StatusBar from "frontend/Components/StatusBar/Status";
+import Projects from "frontend/ProjectPage/Projects";
 import images from "frontend/Components/Icons/icons";
+import { projectData } from "backend/data/projectData";
 
 export default function Home() {
     const [visibleText, setVisibleText] = useState<string>('');
@@ -59,6 +61,20 @@ export default function Home() {
                             <img key={`${name}-${index + imageArray.length}`} src={src} alt={name} />
                         ))}
                     </div>
+                </div>
+                
+                <div className="projects">
+                    <h2>Featured Projects</h2>
+                    {projectData.map((project, index) => (
+                        <Projects
+                            key={index}
+                            name={project.name}
+                            languages={project.languages}
+                            description={project.description}
+                            background={project.background}
+                            url={project.url}
+                        />
+                    ))}
                 </div>
             </div>
             <div

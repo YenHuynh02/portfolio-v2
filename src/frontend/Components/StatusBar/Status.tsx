@@ -12,8 +12,8 @@ const StatusBar: React.FC = () => {
         if ("getBattery" in navigator) {
             (navigator as any).getBattery().then((batteryManager: any) => {
                 setBattery(`${Math.round(batteryManager.level * 100)}%`);
-                setCharging(batteryManager.charging);
-                
+                setCharging(batteryManager.charging); // Fix: Set charging status on page load
+
                 batteryManager.onlevelchange = () => {
                     setBattery(`${Math.round(batteryManager.level * 100)}%`);
                 }
@@ -49,7 +49,7 @@ const StatusBar: React.FC = () => {
         statusBar: {
             display: 'flex',
             alignItems: 'center',
-            fontFamily: "\'Poppins\', serif",
+            fontFamily: "'Poppins', serif",
             fontSize: '18px',
         }
     };
@@ -64,10 +64,10 @@ const StatusBar: React.FC = () => {
     return (
         <div className="statusWrapper">
             <FontAwesomeIcon icon={faWifi} />
-            <span style={styles.statusBar}>
+            <span style={styles.statusBar} >
                 {!charging
-                    ? <FontAwesomeIcon icon={faExclamation} style={{ width: '20px' }} />
-                    : <FontAwesomeIcon icon={faBolt} style={{ width: '20px' }} />}
+                    ? <FontAwesomeIcon icon={faExclamation} style={{ width: '20px' }} id="fontAwesome" />
+                    : <FontAwesomeIcon icon={faBolt} style={{ width: '20px' }} id="fontAwesome" />}
                 {battery}
             </span>
             <span style={styles.statusBar}>{time}</span>
