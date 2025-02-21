@@ -1,4 +1,3 @@
-import { icon } from '@fortawesome/fontawesome-svg-core';
 import { faHouse, faLightbulb, faBriefcase, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 export const menuData = [
