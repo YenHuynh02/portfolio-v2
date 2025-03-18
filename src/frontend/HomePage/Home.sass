@@ -12,7 +12,7 @@ $fontFamily: 'Poppins', serif
     min-height: 100vh
     background-image: radial-gradient(circle, rgb(203 213 225) 2px, #fff 2px)
     background-size: 2.5rem 2.5rem
-    background-position: center center 
+    background-position: center center
 
     .statusBar
         z-index: 9999
@@ -39,19 +39,39 @@ $fontFamily: 'Poppins', serif
 
         .textContainer
             display: flex
-            justify-content: center
+            flex-direction: column
+            align-items: center
+
+            .introduction
+                width: 50%
+
+                p:nth-child(1)
+                    opacity: 0.5
+                    font-size: 2vw
+
+                    &::before
+                        content: '</ '
+                
+                p:nth-child(2)
+                    font-size: 3vw
+
+                    &::after
+                        opacity: 0.5
+                        content: ' >'
 
             .wrapper
                 display: flex
-                flex-direction: column
                 align-items: center
                 width: 50%
 
                 p, .fadeIn, .fadeOut
                     font-family: $fontFamily
                     font-size: 3vw
-                    font-weight: 200
                     margin: 0
+
+                p::before
+                    font-weight: bold
+                    content: '</ '
 
                 .fadeIn,
                 .fadeOut
@@ -64,6 +84,11 @@ $fontFamily: 'Poppins', serif
                         color: $textColor
                         animation: cursor 0.5s infinite linear
 
+                &::after
+                    font-size: 3vw
+                    content: ' >'
+                    color: black
+
         .iconContainer
             display: flex
             overflow: hidden
@@ -74,7 +99,8 @@ $fontFamily: 'Poppins', serif
             .scrolling
                 display: flex
                 gap: 20px
-                animation: scroll-left 35s linear infinite
+                width: max-content
+                animation: scroll-left 10s linear infinite
 
                 img
                     pointer-events: none
@@ -178,10 +204,10 @@ $fontFamily: 'Poppins', serif
 
 @keyframes scroll-left
     from
-        transform: translateX(-50%)
+        transform: translateX(0%)
 
     to
-        transform: translateX(0%)
+        transform: translateX(-50%)
 
 @keyframes cursor
     0%
@@ -214,13 +240,13 @@ $fontFamily: 'Poppins', serif
         transform: rotate(-90deg) translateX(0)
 
 @keyframes scale
-    0% 
+    0%
         transform: scale(1.0) rotate(0)
-    25% 
+    25%
         transform: scale(1.2) rotate(-10deg)
-    50% 
+    50%
         transform: scale(1.1) rotate(0)
-    75% 
+    75%
         transform: scale(1.2) rotate(10deg)
     100%
         transform: scale(1.0) rotate(0)
