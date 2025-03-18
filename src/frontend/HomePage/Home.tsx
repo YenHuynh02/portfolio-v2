@@ -4,39 +4,51 @@ import StatusBar from "frontend/Components/StatusBar/Status";
 import Projects from "frontend/ProjectPage/Projects";
 import images from "frontend/Components/Icons/icons";
 import { projectData } from "backend/data/projectData";
+import { clear } from "console";
 
 export default function Home() {
     const [visibleText, setVisibleText] = useState<string>('');
     const [isHiding, setIsHiding] = useState<boolean>(false);
     const [isPausedButton, setIsPausedButton] = useState<boolean>(false);
-    const nameArr = ['Yen Huynh', 'Peter', 'Software Developer', 'Full Stack Developer'];
+    const nameArr = ['Software Developer', 'Full Stack Developer'];
     const imageArray = Object.entries(images);
     const year = new Date().getFullYear();
 
     useEffect(() => {
-        let i = 0, charIndex = 0, hiding = false;
-        const interval = setInterval(() => {
-            const currentName = nameArr[i];
-            if (!hiding) {
-                charIndex++;
-                if (charIndex > currentName.length) {
-                    setIsHiding(true);
+    let i = 0;
+    let charIndex = 0;
+    let hiding = false;
+
+    const updateText = () => {
+        const currentName = nameArr[i];
+
+        if (!hiding) {
+            charIndex++;
+            if (charIndex > currentName.length) {
+                setTimeout(() => { // Wait 2 seconds before erasing
                     hiding = true;
-                }
+                    updateText();
+                }, 2000);
+                return;
             }
-            else {
-                charIndex--;
-                if (charIndex < 0) {
-                    setIsHiding(false);
-                    hiding = false;
-                    charIndex = 0;
-                    i = (i + 1) % nameArr.length;
-                }
+        } else {
+            charIndex--;
+            if (charIndex < 0) {
+                hiding = false;
+                charIndex = 0;
+                i = (i + 1) % nameArr.length;
             }
-            setVisibleText(currentName.substring(0, charIndex));
-        }, 200);
-        return () => clearInterval(interval);
-    }, [])
+        }
+
+        setVisibleText(currentName.substring(0, charIndex));
+        setTimeout(updateText, 80);
+    };
+
+    updateText();
+
+    return () => {};
+}, []);
+
 
     return (
         <div className="homePage">
@@ -45,24 +57,25 @@ export default function Home() {
             </div>
             <div className="homeContainer">
                 <div className="textContainer">
+                    <div className="introduction">
+                        <p>Hi, My name is</p>
+                        <p>Peter Huynh</p>
+                    </div>
                     <div className="wrapper">
-                        <p>Hi, I'm {''}</p>
+                        <p>I'm <span style={{ color: '#FF4500' }}>a</span>&nbsp;</p>
                         <span className={isHiding ? 'fadeOut' : 'fadeIn'}>{visibleText}
-                            <span>|</span>
+                            <span id="cursor">|</span>
                         </span>
                     </div>
                 </div>
                 <div className="iconContainer">
                     <div className="scrolling">
-                        {imageArray.map(([name, src], index) => (
+                        {[...imageArray, ...imageArray].map(([name, src], index) => (
                             <img key={`${name}-${index}`} src={src} alt={name} />
-                        ))}
-                        {imageArray.map(([name, src], index) => (
-                            <img key={`${name}-${index + imageArray.length}`} src={src} alt={name} />
                         ))}
                     </div>
                 </div>
-                
+
                 <div className="projects">
                     <h2>Featured Projects</h2>
                     {projectData.map((project, index) => (
@@ -94,7 +107,7 @@ export default function Home() {
                 </a>
             </div>
             <div className="copyright">
-                <p>&copy; Yen Huynh {year}</p>
+                <p>&copy;{year} Yen Huynh</p>
             </div>
         </div>
     );
