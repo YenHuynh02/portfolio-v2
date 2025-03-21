@@ -4,47 +4,77 @@ import StatusBar from "frontend/Components/StatusBar/Status";
 import Projects from "frontend/ProjectPage/Projects";
 import images from "frontend/Components/Icons/icons";
 import { projectData } from "backend/data/projectData";
-import { clear } from "console";
 
 export default function Home() {
-    const [visibleText, setVisibleText] = useState<string>('');
+    const [visibleTitle, setVisibleTitle] = useState<string>('');
+    const [visibleName, setVisibleName] = useState<string>('');
     const [isHiding, setIsHiding] = useState<boolean>(false);
     const [isPausedButton, setIsPausedButton] = useState<boolean>(false);
-    const nameArr = ['Software Developer', 'Full Stack Developer'];
+    const nameArr = ['Yen', 'Peter'];
+    const titleArr = ['a Software Developer', 'a Full Stack Developer', 'an AI Enthusiastic'];
     const imageArray = Object.entries(images);
     const year = new Date().getFullYear();
 
     useEffect(() => {
     let i = 0;
-    let charIndex = 0;
-    let hiding = false;
+    let j = 0;
+    let titleIndex = 0;
+    let nameIndex = 0;
+    let hidingTitle = false;
+    let hidingName = false;
 
-    const updateText = () => {
-        const currentName = nameArr[i];
+    const updateTitle = () => {
+        const currentTitle = titleArr[i];
 
-        if (!hiding) {
-            charIndex++;
-            if (charIndex > currentName.length) {
+        if (!hidingTitle) {
+            titleIndex++;
+            if (titleIndex > currentTitle.length) {
                 setTimeout(() => { // Wait 2 seconds before erasing
-                    hiding = true;
-                    updateText();
+                    hidingTitle = true;
+                    updateTitle();
                 }, 2000);
                 return;
             }
         } else {
-            charIndex--;
-            if (charIndex < 0) {
-                hiding = false;
-                charIndex = 0;
-                i = (i + 1) % nameArr.length;
+            titleIndex--;
+            if (titleIndex < 0) {
+                hidingTitle = false;
+                titleIndex = 0;
+                i = (i + 1) % titleArr.length;
             }
         }
 
-        setVisibleText(currentName.substring(0, charIndex));
-        setTimeout(updateText, 80);
+        setVisibleTitle(currentTitle.substring(0, titleIndex));
+        setTimeout(updateTitle, 80);
     };
 
-    updateText();
+    const updateName = () => {
+        const currentName = nameArr[j];
+
+        if (!hidingName) {
+            nameIndex++;
+            if (nameIndex > currentName.length) {
+                setTimeout(() => { // Wait 2 seconds before erasing
+                    hidingName = true;
+                    updateName();
+                }, 2500);
+                return;
+            }
+        } else {
+            nameIndex--;
+            if (nameIndex < 0) {
+                hidingName = false;
+                nameIndex = 0;
+                j = (j + 1) % nameArr.length;
+            }
+        }
+
+        setVisibleName(currentName.substring(0, nameIndex));
+        setTimeout(updateName, 100);
+    };
+
+    updateTitle();
+    updateName();
 
     return () => {};
 }, []);
@@ -59,11 +89,11 @@ export default function Home() {
                 <div className="textContainer">
                     <div className="introduction">
                         <p>Hi, My name is</p>
-                        <p>Peter Huynh</p>
+                        <p><span className={isHiding ? 'fadeOut' : 'fadeIn'}>{visibleName}</span> Huynh</p>
                     </div>
                     <div className="wrapper">
-                        <p>I'm <span style={{ color: '#FF4500' }}>a</span>&nbsp;</p>
-                        <span className={isHiding ? 'fadeOut' : 'fadeIn'}>{visibleText}
+                        <p>I'm&nbsp;</p>
+                        <span className={isHiding ? 'fadeOut' : 'fadeIn'}>{visibleTitle}
                             <span id="cursor">|</span>
                         </span>
                     </div>

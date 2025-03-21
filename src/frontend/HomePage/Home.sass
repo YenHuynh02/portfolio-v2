@@ -48,16 +48,18 @@ $fontFamily: 'Poppins', serif
                 p:nth-child(1)
                     opacity: 0.5
                     font-size: 2vw
-
-                    &::before
-                        content: '</ '
                 
                 p:nth-child(2)
-                    font-size: 3vw
+                    color: $textColor
+                    font-size: 3.5vw
+
+                    &::before 
+                        opacity: 0.5
+                        content: '<h1> '
 
                     &::after
                         opacity: 0.5
-                        content: ' >'
+                        content: ' </h1>'
 
             .wrapper
                 display: flex
@@ -71,7 +73,8 @@ $fontFamily: 'Poppins', serif
 
                 p::before
                     font-weight: bold
-                    content: '</ '
+                    content: '< '
+                    opacity: 0.5
 
                 .fadeIn,
                 .fadeOut
@@ -85,6 +88,7 @@ $fontFamily: 'Poppins', serif
                         animation: cursor 0.5s infinite linear
 
                 &::after
+                    opacity: 0.5
                     font-size: 3vw
                     content: ' >'
                     color: black
