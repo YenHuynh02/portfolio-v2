@@ -1,4 +1,4 @@
-import { faHouse, faLightbulb, faBriefcase, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faLightbulb, faLaptopCode, faRoad, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 export const menuData = [
     {
@@ -12,9 +12,14 @@ export const menuData = [
         url: '/projects'
     },
     {
-        title: 'About',
-        icon: faBriefcase,
-        url: '/about'
+        title: 'Skills',
+        icon: faLaptopCode,
+        url: '/skills'
+    },
+    {
+        title: 'Path',
+        icon: faRoad,
+        url: '/path'
     },
     {
         title: 'Contact',
