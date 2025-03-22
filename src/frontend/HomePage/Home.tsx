@@ -16,68 +16,68 @@ export default function Home() {
     const year = new Date().getFullYear();
 
     useEffect(() => {
-    let i = 0;
-    let j = 0;
-    let titleIndex = 0;
-    let nameIndex = 0;
-    let hidingTitle = false;
-    let hidingName = false;
+        let i = 0;
+        let j = 0;
+        let titleIndex = 0;
+        let nameIndex = 0;
+        let hidingTitle = false;
+        let hidingName = false;
 
-    const updateTitle = () => {
-        const currentTitle = titleArr[i];
+        const updateTitle = () => {
+            const currentTitle = titleArr[i];
 
-        if (!hidingTitle) {
-            titleIndex++;
-            if (titleIndex > currentTitle.length) {
-                setTimeout(() => { // Wait 2 seconds before erasing
-                    hidingTitle = true;
-                    updateTitle();
-                }, 2000);
-                return;
+            if (!hidingTitle) {
+                titleIndex++;
+                if (titleIndex > currentTitle.length) {
+                    setTimeout(() => { // Wait 2 seconds before erasing
+                        hidingTitle = true;
+                        updateTitle();
+                    }, 2000);
+                    return;
+                }
+            } else {
+                titleIndex--;
+                if (titleIndex < 0) {
+                    hidingTitle = false;
+                    titleIndex = 0;
+                    i = (i + 1) % titleArr.length;
+                }
             }
-        } else {
-            titleIndex--;
-            if (titleIndex < 0) {
-                hidingTitle = false;
-                titleIndex = 0;
-                i = (i + 1) % titleArr.length;
+
+            setVisibleTitle(currentTitle.substring(0, titleIndex));
+            setTimeout(updateTitle, 80);
+        };
+
+        const updateName = () => {
+            const currentName = nameArr[j];
+
+            if (!hidingName) {
+                nameIndex++;
+                if (nameIndex > currentName.length) {
+                    setTimeout(() => { // Wait 2 seconds before erasing
+                        hidingName = true;
+                        updateName();
+                    }, 2500);
+                    return;
+                }
+            } else {
+                nameIndex--;
+                if (nameIndex < 0) {
+                    hidingName = false;
+                    nameIndex = 0;
+                    j = (j + 1) % nameArr.length;
+                }
             }
-        }
 
-        setVisibleTitle(currentTitle.substring(0, titleIndex));
-        setTimeout(updateTitle, 80);
-    };
+            setVisibleName(currentName.substring(0, nameIndex));
+            setTimeout(updateName, 100);
+        };
 
-    const updateName = () => {
-        const currentName = nameArr[j];
+        updateTitle();
+        updateName();
 
-        if (!hidingName) {
-            nameIndex++;
-            if (nameIndex > currentName.length) {
-                setTimeout(() => { // Wait 2 seconds before erasing
-                    hidingName = true;
-                    updateName();
-                }, 2500);
-                return;
-            }
-        } else {
-            nameIndex--;
-            if (nameIndex < 0) {
-                hidingName = false;
-                nameIndex = 0;
-                j = (j + 1) % nameArr.length;
-            }
-        }
-
-        setVisibleName(currentName.substring(0, nameIndex));
-        setTimeout(updateName, 100);
-    };
-
-    updateTitle();
-    updateName();
-
-    return () => {};
-}, []);
+        return () => { };
+    }, []);
 
 
     return (
@@ -108,16 +108,18 @@ export default function Home() {
 
                 <div className="projects">
                     <h2>Featured Projects</h2>
-                    {projectData.map((project, index) => (
-                        <Projects
-                            key={index}
-                            name={project.name}
-                            languages={project.languages}
-                            description={project.description}
-                            background={project.background}
-                            url={project.url}
-                        />
-                    ))}
+                    <div className="outter-box">
+                        {projectData.map((project, index) => (
+                            <Projects
+                                key={index}
+                                name={project.name}
+                                languages={project.languages}
+                                description={project.description}
+                                background={project.background}
+                                url={project.url}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
             <div
