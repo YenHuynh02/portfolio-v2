@@ -1,5 +1,12 @@
 export const projectData = [
     {
+        name: 'TaggAI',
+        languages: 'JavaScript, React Native',
+        description: '123',
+        background: '',
+        url: ''
+    },
+    {
         name: 'Elder Care',
         languages: 'JavaScript, Sass, TailwindCSS',
         description: 'Health tracker record',
@@ -13,11 +20,4 @@ export const projectData = [
         background: '',
         url: ''
     },
-    {
-        name: 'Portfolio',
-        languages: 'React, TypeScript, Sass',
-        description: 'Portfolio',
-        background: '',
-        url: ''
-    }
 ];
