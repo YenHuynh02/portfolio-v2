@@ -13,7 +13,7 @@ export default function Home() {
     const nameArr = ['Yen', 'Peter'];
     const titleArr = ['a Software Developer', 'a Full Stack Developer', 'an AI Enthusiastic'];
     const imageArray = Object.entries(images);
-    const year = '2026';
+    const year = {2026};
 
     useEffect(() => {
         let i = 0;
